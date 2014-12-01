@@ -27,6 +27,12 @@ or
 <input type="text" ng-model="iban" ng-iban="[Country code]"/>
 ```
 
+###with country code validation
+```html
+<input type="text" ng-model="iban" ng-iban countrycodecheck/>
+<span class="error" ng-if="f.iban.$error.countrycodecheck" ng-hide="f.iban.$pristine">country code not supported</span>
+```
+
 where `[Country code]` is one of the country codes from the table below.
 
 To use this directive the `ngModel` directive must also be used because this directive depends on it.
