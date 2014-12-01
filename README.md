@@ -16,18 +16,18 @@ Make sure you require `mm.iban` as a dependency of your AngularJS module.
 
 ### directive
 ```html
-<input type="text" ng-model="iban" ng-iban/>
+<input type="text" name="iban" ng-model="iban" ng-iban/>
 ```
 
 or
 
 ```html
-<input type="text" ng-model="iban" ng-iban="[Country code]"/>
+<input type="text" name="iban" ng-model="iban" ng-iban="[Country code]"/>
 ```
 
 ###with country code validation
 ```html
-<input type="text" ng-model="iban" ng-iban countrycodecheck/>
+<input type="text" name="iban" ng-model="iban" ng-iban countrycodecheck/>
 <span class="error" ng-if="f.iban.$error.countrycodecheck" ng-hide="f.iban.$pristine">country code not supported</span>
 ```
 
