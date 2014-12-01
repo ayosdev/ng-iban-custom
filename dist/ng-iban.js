@@ -350,9 +350,9 @@
 
         //For DOM -> model validation
         ngModel.$parsers.unshift(function(value) {
-           var valid = countrycodecheck.indexOf(value) === 1;
+           // var valid = countrycodecheck.indexOf(value) === 1;
            ngModel.$setValidity('countrycodecheck', country_code_regex.test(value));
-           return valid ? value : undefined;
+           return value;
         });
 
         //For model -> DOM validation
