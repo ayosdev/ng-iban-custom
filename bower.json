@@ -1,8 +1,8 @@
 {
-  "name": "ng-iban",
+  "name": "ng-iban-custom",
   "version": "0.3.1",
   "authors": [
-    "Mark Manders <mmjmanders@gmail.com>"
+    "Juven Pajares <serolfwijaya@gmail.com>"
   ],
   "description": "IBAN directive for AngularJS",
   "main": "./dist/ng-iban.js",
