@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/mmjmanders/ng-iban.svg?branch=master)](https://travis-ci.org/mmjmanders/ng-iban)
-
 # ng-iban - validate input fields as IBAN
 The goals is to provide an easy way to validate an input field as an IBAN number with [AngularJS](https://angularjs.org/).
 
@@ -7,14 +5,14 @@ The goals is to provide an easy way to validate an input field as an IBAN number
 First add
 
 - `AngularJS`
-- `ng-iban`
+- `ng-iban-custom`
 
 to your HTML file.
 
 Make sure you require `mm.iban` as a dependency of your AngularJS module.
 
 ## Installation
-`bower install ng-iban`
+`bower install ng-iban-custom`
 
 ### directive
 ```html
