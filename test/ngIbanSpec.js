@@ -1070,15 +1070,208 @@ describe('ngIban Spec', function () {
     expect(form.ibancode.$valid).toBe(false);
   });
 
+  // ** Kazakhstan
+  it('Should validate a valid IBAN (Kazakhstan) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('KZ176010251000042993');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Kazakhstan) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('KZ176010251000042193');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Kuwait
+  it('Should validate a valid IBAN (Kuwait) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('KW74NBOK0000000000001000372151');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Kuwait) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('KW74NBOE0000000000001000372151');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Latvia
+  it('Should validate a valid IBAN (Latvia) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LV80BANK0000435195001');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Latvia) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LV80BANK0000425195001');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Lebanon
+  it('Should validate a valid IBAN (Lebanon) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LB30099900000001001925579115');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Lebanon) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LB30099900000001001925579114');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Liechtenstein
+  it('Should validate a valid IBAN (Liechtenstein) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LI21088100002324013AA');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Liechtenstein) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LI21088100002324013BA');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Lithuania
+  it('Should validate a valid IBAN (Lithuania) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LT121000011101001000');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Lithuania) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LT121000011101002000');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Luxembourg
+  it('Should validate a valid IBAN (Luxembourg) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LU280019400644750000');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Luxembourg) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('LU280019400634750000');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Macedonia
+  it('Should validate a valid IBAN (Macedonia) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('MK07300000000042425');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Macedonia) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('MK06300000000042425');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
 /*
-42  Kazakhstan  KZ  KZ176010251000042993  
-43  Kuwait  KW  KW74NBOK0000000000001000372151  
-44  Latvia SEPA LV  LV80BANK0000435195001 
-45  Lebanon LB  LB30099900000001001925579115  
-46  Liechtenstein SEPA  LI  LI21088100002324013AA 
-47  Lithuania SEPA  LT  LT121000011101001000  
-48  Luxembourg SEPA LU  LU280019400644750000  
-49  Macedonia MK  MK07300000000042425 
+
 50  Madagascar  MG  MG4600005030010101914016056 
 51  Malta SEPA  MT  MT84MALT011000012345MTLCAST001S 
 52  Mauritania  MR  MR1300012000010000002037372 
