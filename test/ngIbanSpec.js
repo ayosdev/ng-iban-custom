@@ -3,10 +3,10 @@ describe('ngIban Spec', function () {
   var scope,
         compile,
         html,
-        form;
+        form,
+        timeout;
 
   beforeEach(function(){
-
     module('mm.iban');
     
     html = 
@@ -19,9 +19,10 @@ describe('ngIban Spec', function () {
               "</div>" 
                 ;
 
-    inject(function($compile, $rootScope){
+    inject(function($compile, $rootScope, $timeout){
       scope = $rootScope.$new();
       compile = $compile;
+      timeout = $timeout;
 
       //get the jqLite or jQuery element
       elem = angular.element(html);
@@ -38,18 +39,22 @@ describe('ngIban Spec', function () {
 
       // Get the angularjs form control
       form = scope.containerform;
+
     });
   });
 
    // Samples taken from http://formvalidation.io/validators/iban/
 
    // TODO Big lists to add (valid emails):
+   
    // http://www.rbs.co.uk/corporate/international/g0/guide-to-international-business/regulatory-information/iban/iban-example.ashx
+   
+   // Same as samples implemented:
    // http://www.letterofcredit.biz/Business-Identifier-Code-(BIC)-and-International-Bank-Account-Number-(IBAN).html
    // ** Albania
   it('Should validate a valid IBAN (Albania) and return valid', function(){
 
-    // Arrange    
+    // Arrange              
     form.ibancode.$setViewValue('AL47212110090000000235698741');
 
     // Act
@@ -1678,7 +1683,7 @@ describe('ngIban Spec', function () {
 
   // WATCH OUT !! THIS TWO TESTS ARE FAILING
   // ** Republic of Kosovo
-  /*
+  
   it('Should validate a valid IBAN (Republic of Kosovo) and return valid', function(){
 
     // Arrange                                     
@@ -1690,9 +1695,9 @@ describe('ngIban Spec', function () {
     
     // Assert
     expect(form.ibancode.$valid).toBe(true);
-  });*/
+  });
 
- /*
+ 
   it('Should validate a valid IBAN (Republic of Kosovo - second test) and return valid', function(){
 
     // Arrange                                     
@@ -1704,7 +1709,7 @@ describe('ngIban Spec', function () {
     // Assert
     expect(form.ibancode.$valid).toBe(true);
   });
-*/
+
 
   it('Should validate a non valid IBAN (Republic of Kosovo) and return error', function(){
 
@@ -1920,20 +1925,259 @@ describe('ngIban Spec', function () {
     expect(form.ibancode.$valid).toBe(false);
   });
 
+  // ** Sweden
+  it('Should validate a valid IBAN (Sweden) and return valid', function(){
 
-/*
+    // Arrange    
+    form.ibancode.$setViewValue('SE3550000000054910000003');
 
-75  Sweden SEPA SE  SE3550000000054910000003  
-76  Switzerland SEPA  CH  CH9300762011623852957 
-77  Tunisia TN  TN5914207207100707129648  
-78  Turkey  TR  TR330006100519786457841326  
-79  United Arab Emirates  AE  AE260211000000230064016 
-80  United Kingdom SEPA GB  GB29NWBK60161331926819  
-81  Virgin Islands, British VG  VG96VPVG0000012345678901  
-*/
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Sweden) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('SE3550000000154910000003');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Switzerland
+  it('Should validate a valid IBAN (Switzerland) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('CH9300762011623852957');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Switzerland) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('CH9300762011623852857');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Tunisia
+  it('Should validate a valid IBAN (Tunisia) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('TN5914207207100707129648');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Tunisia) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('TN5914207207100707329648');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** Turkey
+  it('Should validate a valid IBAN (Turkey) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('TR330006100519786457841326');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Turkey) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('TR330006100519786557841326');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** United Arab Emirates
+  it('Should validate a valid IBAN (United Arab Emirates) and return valid', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('AE260211000000230064016');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (United Arab Emirates) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('AE260261000000230064016');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  // ** United Kingdom
+  it('Should validate a valid IBAN (United Kingdom) and return valid', function(){
+
+    // Arrange      
+    form.ibancode.$setViewValue('GB29NWBK60161331926819');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (United Kingdom) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('GB29NWBK60161331326819');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
 
 
+  // ** Virgin Islands, British VG
+  it('Should validate a valid IBAN (Virgin Islands, British VG) and return valid', function(){
 
+    // Arrange    
+    form.ibancode.$setViewValue('VG96VPVG0000012345678901');
 
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(true);
+  });
+
+  it('Should validate a non valid IBAN (Virgin Islands, British VG) and return error', function(){
+
+    // Arrange    
+    form.ibancode.$setViewValue('VG96VYVG0000012345678901');
+
+    // Act
+    scope.$digest();    
+    
+    // Assert
+    expect(form.ibancode.$valid).toBe(false);
+  });
+
+  it('Should validate a non a list of valid IBANs (extracted from: http://www.rbs.co.uk/corporate/international/g0/guide-to-international-business/regulatory-information/iban/iban-example.ashx) and return valid', function(){
+
+    var validIbans = [
+         {country: 'Albania',iban: 'AL47 2121 1009 0000 0002 3569 8741'}  // replaced, original form the list was erroneus
+        ,{country: 'Andorra',iban: 'AD12 0001 2030 2003 5910 0100'}
+        ,{country: 'Austria',iban: 'AT61 1904 3002 3457 3201'}
+        ,{country: 'Azerbaijan',iban: 'AZ21 NABZ 0000 0000 1370 1000 1944'}
+        ,{country: 'Bahrain',iban: 'BH67 BMAG 0000 1299 1234 56'}
+        ,{country: 'Belgium',iban: 'BE62 5100 0754 7061'}
+        ,{country: 'Bosnia and Herzegovina',iban: 'BA39 1290 0794 0102 8494'}
+        ,{country: 'Bulgaria',iban: 'BG80 BNBG 9661 1020 3456 78'}
+        ,{country: 'Croatia',iban: 'HR12 1001 0051 8630 0016 0'}
+        ,{country: 'Cyprus',iban: 'CY17 0020 0128 0000 0012 0052 7600'}
+        ,{country: 'Czech Republic',iban: 'CZ65 0800 0000 1920 0014 5399'}
+        ,{country: 'Denmark',iban: 'DK50 0040 0440 1162 43'}
+        ,{country: 'Estonia',iban: 'EE38 2200 2210 2014 5685'}
+        ,{country: 'Faroe Islands',iban: 'FO97 5432 0388 8999 44'}
+        ,{country: 'Finland',iban: 'FI21 1234 5600 0007 85'}
+        ,{country: 'France',iban: 'FR14 2004 1010 0505 0001 3M02 606'}
+        ,{country: 'Georgia',iban: 'GE29 NB00 0000 0101 9049 17'}
+        ,{country: 'Germany',iban: 'DE89 3704 0044 0532 0130 00'}
+        ,{country: 'Gibraltar',iban: 'GI75 NWBK 0000 0000 7099 453'}
+        ,{country: 'Greece',iban: 'GR16 0110 1250 0000 0001 2300 695'}
+        ,{country: 'Greenland',iban: 'GL56 0444 9876 5432 10'}
+        ,{country: 'Hungary',iban: 'HU42 1177 3016 1111 1018 0000 0000'}
+        ,{country: 'Iceland',iban: 'IS14 0159 2600 7654 5510 7303 39'}
+        ,{country: 'Ireland',iban: 'IE29 AIBK 9311 5212 3456 78'}
+        ,{country: 'Israel',iban: 'IL62 0108 0000 0009 9999 999'}
+        ,{country: 'Italy',iban: 'IT40 S054 2811 1010 0000 0123 456'}
+        ,{country: 'Jordan',iban: 'JO94 CBJO 0010 0000 0000 0131 0003 02'}
+        ,{country: 'Kuwait',iban: 'KW81 CBKU 0000 0000 0000 1234 5601 01'}
+        ,{country: 'Latvia',iban: 'LV80 BANK 0000 4351 9500 1'}
+        ,{country: 'Lebanon',iban: 'LB62 0999 0000 0001 0019 0122 9114'}
+        ,{country: 'Liechtenstein',iban: 'LI21 0881 0000 2324 013A A'}
+        ,{country: 'Lithuania',iban: 'LT12 1000 0111 0100 1000'}
+        ,{country: 'Luxembourg',iban: 'LU28 0019 4006 4475 0000'}
+        ,{country: 'Macedonia',iban: 'MK072 5012 0000 0589 84'}
+        ,{country: 'Malta',iban: 'MT84 MALT 0110 0001 2345 MTLC AST0 01S'}
+        ,{country: 'Mauritius',iban: 'MU17 BOMM 0101 1010 3030 0200 000M UR'}
+        ,{country: 'Moldova',iban: 'MD24 AG00 0225 1000 1310 4168'}
+        ,{country: 'Monaco',iban: 'MC93 2005 2222 1001 1223 3M44 555'}
+        ,{country: 'Montenegro',iban: 'ME25 5050 0001 2345 6789 51'}
+        ,{country: 'Netherlands',iban: 'NL39 RABO 0300 0652 64'}
+        ,{country: 'Norway',iban: 'NO93 8601 1117 947'}
+        ,{country: 'Pakistan',iban: 'PK36 SCBL 0000 0011 2345 6702'}
+        ,{country: 'Poland',iban: 'PL60 1020 1026 0000 0422 7020 1111'}
+        ,{country: 'Portugal',iban: 'PT50 0002 0123 1234 5678 9015 4'}
+        ,{country: 'Qatar',iban: 'QA58 DOHB 0000 1234 5678 90AB CDEF G'}
+        ,{country: 'Romania',iban: 'RO49 AAAA 1B31 0075 9384 0000'}
+        ,{country: 'San Marino',iban: 'SM86 U032 2509 8000 0000 0270 100'}
+        ,{country: 'Saudi Arabia',iban: 'SA03 8000 0000 6080 1016 7519'}
+        ,{country: 'Serbia',iban: 'RS35 2600 0560 1001 6113 79'}
+        ,{country: 'Slovak Republic',iban: 'SK31 1200 0000 1987 4263 7541'}
+        ,{country: 'Slovenia',iban: 'SI56 1910 0000 0123 438'}
+        ,{country: 'Spain',iban: 'ES80 2310 0001 1800 0001 2345'}
+        ,{country: 'Sweden',iban: 'SE35 5000 0000 0549 1000 0003'}
+        ,{country: 'Switzerland',iban: 'CH93 0076 2011 6238 5295 7'}
+        ,{country: 'Tunisia',iban: 'TN59 1000 6035 1835 9847 8831'}
+        ,{country: 'Turkey',iban: 'TR33 0006 1005 1978 6457 8413 26'}
+        ,{country: 'UAE',iban: 'AE07 0331 2345 6789 0123 456'}
+        ,{country: 'United Kingdom',iban: 'GB77BARC20201530093459'} // Not from original link list, that was erroneus       
+    ];
+
+    var index = 0;
+    var max = validIbans.length;
+
+    for(index = 0;index < max;index++) {
+        // Arrange    
+        form.ibancode.$setViewValue(validIbans[index].iban);
+
+        // Act
+        scope.$digest();       
+
+        // Assert
+        // Adding context information: https://github.com/jasmine/jasmine/issues/641#issuecomment-54736801
+       expect( form.ibancode.$valid ).toEqual( true, 'Failed on this country:' + validIbans[index].country );            
+    }
+  });
 
 });
