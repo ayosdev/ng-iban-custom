@@ -14,24 +14,24 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [	
-	  'bower_components/angular/angular.js', 
-      'bower_components/angular-mocks/angular-mocks.js',      
-	  'dist/ng-iban.js',	             
-      'test/*.js'      
+    files: [
+	  'bower_components/angular/angular.js',
+      'bower_components/angular-mocks/angular-mocks.js',
+	  'dist/ng-iban.js',
+      'test/*.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-      
+
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-    
+
     },
 
 
