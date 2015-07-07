@@ -269,7 +269,7 @@
     },
     XK: {
       name: 'Kosovo, Republic of',
-      regex: /^XK[0-9]{2}[0-9]{4}[0-9]{4}[0-9]{4}[0-9]{4}$/
+      regex: /^XK[0-9]{2}[0-9]{4}[A-Z0-9]{12}$/
     }
   }).directive('ngIban', ["ngIbanCountries", function(ngIbanCountries) {
     return {
