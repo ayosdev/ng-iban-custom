@@ -308,39 +308,21 @@
           }
           return __modulo(parseInt(remainder, 10), 97) === 1;
         };
-        ctrl.$parsers.unshift(function(viewValue) {
+
+        ctrl.$validators.ngIban = function(viewValue) {
           var parsed, valid;
           if (viewValue != null) {
             valid = isValidIban(viewValue);
-            ctrl.$setValidity('iban', valid);
             if (valid) {
               parsed = parseIban(viewValue);
               if (parsed !== viewValue) {
                 ctrl.$setViewValue(parsed);
                 ctrl.$render();
               }
-              return parsed;
-            } else {
-              return void 0;
             }
           }
-        });
-        return ctrl.$formatters.unshift(function(modelValue) {
-          var parsed, valid;
-          if (modelValue != null) {
-            valid = isValidIban(modelValue);
-            ctrl.$setValidity('iban', valid);
-            if (valid) {
-              parsed = parseIban(modelValue);
-              if (parsed !== modelValue) {
-                scope[attrs.ngModel] = parsed;
-              }
-              return parsed;
-            } else {
-              return modelValue;
-            }
-          }
-        });
+          return valid;
+        };
       }
     };
   }]).directive('countrycodecheck', function (){
